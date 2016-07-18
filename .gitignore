@@ -1,0 +1,13 @@
+*.o
+*.a
+*.idea
+*.swp
+*.so
+*.out
+CMakeFiles
+CMakeCache.txt
+CMakeScripts
+Makefile
+cmake_install.cmake
+install_manifest.txt
+CTestTestfile.cmake
