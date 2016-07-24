@@ -5,13 +5,13 @@
 #include "fake_ws_server_impl.h"
 #include "net/server.hpp"
 #include "fake_user.h"
-
+#include "net/simple_policy.h"
 using namespace ws;
 
 TEST(ServerTests, ServerTests) {
     auto  policy = std::make_shared<NoAuthPolicy>();
 
-    NetServer<NoAuthPolicy, FakeUser<UserType::USER>, FakeWsServerImpl> server(policy);
+    NetServer<FakeWsServerImpl, NoAuthPolicy> server;
 
     auto con = server.newConnection();
     ASSERT_TRUE(con);

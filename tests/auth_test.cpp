@@ -10,7 +10,7 @@
 using namespace ws;
 
 TEST(AuthTest, AuthTestFailed) {
-    Auth<AlwaysFalseFakePolicy, FakeUser<UserType::USER>,  std::shared_ptr<int> > auth();
+    Auth<std::shared_ptr<int>, AlwaysFalseFakePolicy> auth;
 
     std::shared_ptr<int> con1 = std::make_shared<int>(1);
     std::shared_ptr<int> con2 = std::make_shared<int>(2);
@@ -54,7 +54,7 @@ TEST(AuthTest, AuthTestFailed) {
 }
 
 TEST(AuthTest, AuthTestSuccess) {
-    Auth<NoAuthPolicy, FakeUser<UserType::USER>,  std::shared_ptr<int> > auth();
+    Auth<std::shared_ptr<int>, AlwaysFalseFakePolicy> auth;
 
     std::shared_ptr<int> con1 = std::make_shared<int>(1);
     std::shared_ptr<int> con2 = std::make_shared<int>(2);

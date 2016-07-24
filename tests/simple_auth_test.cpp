@@ -14,11 +14,11 @@ TEST(TestSimpleAuth, SimpleAuthTest) {
             {"login3", "password3"}
     };
 
-    User::Ptr  user1 = std::make_shared<User>("login1");
-    User::Ptr  user2 = std::make_shared<User>("login2");
-    User::Ptr  user3 = std::make_shared<User>("login3");
+    User::Ptr user1 = std::make_shared<User>("login1", UserType::USER);
+    User::Ptr user2 = std::make_shared<User>("login2", UserType::USER);
+    User::Ptr user3 = std::make_shared<User>("login3", UserType::ADMIN);
 
-    User::Ptr  user = std::make_shared<User>("login");
+    User::Ptr user = std::make_shared<User>("login", UserType::ADMIN);
 
     EXPECT_TRUE(policy.auth(user1, "passwordtoken", "token"));
     EXPECT_FALSE(policy.auth(user1, "passwordtoken1", "token"));

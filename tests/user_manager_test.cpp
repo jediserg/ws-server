@@ -11,8 +11,8 @@ using namespace ws;
 
 TEST(TestUserManager, TestUserManager)
 {
-    auto user1 = std::make_shared<User>("user1");
-    auto user2 = std::make_shared<User>("user2");
+    auto user1 = std::make_shared<User>("user1", UserType::USER);
+    auto user2 = std::make_shared<User>("user2", UserType::ADMIN);
 
     UserManager::instance().addUser(user1);
     UserManager::instance().addUser(user2);
