@@ -3,14 +3,19 @@
 //
 #include "simple_user_factory.h"
 
-std::function<User::Ptr (std::string)> createSimpleUserFactory(std::map<std::string, std::pair<UserType , std::string>>&& users) {
-    return [users] (std::string name)
+namespace ws
+{
+    std::function<User::Ptr(std::string)> createSimpleUserFactory(
+            std::map<std::string, std::pair<UserType, std::string>> &&users)
     {
-        auto it = users.find(name);
+        return [users](std::string name)
+            {
+                auto it = users.find(name);
 
-        if(it == users.end())
-            return User::Ptr();
+                if(it == users.end())
+                    return User::Ptr();
 
-        return std::make_shared<User>(name, it->second.first, it->second.second);
-    };
+                return std::make_shared<User>(name, it->second.first, it->second.second);
+            };
+    }
 }

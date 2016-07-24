@@ -5,6 +5,7 @@
 #ifndef WS_SERVER_FAKE_HASH_H_H
 #define WS_SERVER_FAKE_HASH_H_H
 
+using namespace ws;
 
 #include <string>
 

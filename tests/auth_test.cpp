@@ -5,7 +5,9 @@
 #include "net/auth.hpp"
 #include "fake_policy.h"
 #include "fake_user.h"
-#include "simple_policy.h"
+#include "net/simple_policy.h"
+
+using namespace ws;
 
 TEST(AuthTest, AuthTestFailed) {
     Auth<AlwaysFalseFakePolicy, FakeUser<UserType::USER>,  std::shared_ptr<int> > auth();

@@ -10,12 +10,12 @@
 #include "net/simple_policy.h"
 #include "utils/md5.h"
 
-//template <class AuthPolicy, class UserCls> using WsServer = NetServer<AuthPolicy, UserCls, WsServerImpl>;
+namespace ws
+{
+    class WsServerNoAuth : public NetServer<WsServerImpl, NoAuthPolicy>
+    {
+    public:
 
-class WsServerNoAuth : public NetServer<WsServerImpl, NoAuthPolicy> {
-public:
-
-};
-//template <class UserCls> using WsSimpleServer = NetServer<SimpleAuthPolicy<MD5Hash>, UserCls, WsServerImpl>;
-
+    };
+}
 #endif //WS_SERVER_WS_SERVER_H

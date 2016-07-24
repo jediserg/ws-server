@@ -5,6 +5,7 @@
 #include <net/simple_policy.h>
 #include "fake_hash.h"
 
+#include "net/simple_policy.h"
 
 TEST(TestSimpleAuth, SimpleAuthTest) {
     SimpleAuthPolicy<FakeHashFunction> policy  {

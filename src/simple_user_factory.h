@@ -8,13 +8,16 @@
 #include <map>
 #include "user.h"
 
-User::Ptr noAuthUserFactory(std::string)
+namespace ws
 {
-    return nullptr;
-};
+    User::Ptr noAuthUserFactory(std::string)
+    {
+        return nullptr;
+    };
 
-std::function<User::Ptr (std::string)> createSimpleUserFactory(std::map<std::string, std::pair<UserType , std::string>> users);
+    std::function<User::Ptr(std::string)> createSimpleUserFactory(
+            std::map<std::string, std::pair<UserType, std::string>> users);
 
-
+}
 
 #endif //WS_SERVER_SIMPLE_USER_FACTORY_H

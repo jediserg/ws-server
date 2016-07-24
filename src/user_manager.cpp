@@ -7,34 +7,40 @@
 #include <iostream>
 #include "user_manager.h"
 
-void UserManager::addUser(User::Ptr user)
+namespace ws
 {
-	_users[user->getName()] = user;
-}
 
-User::Ptr UserManager::getUser(const std::string& name)
-{
-	auto it = _users.find(name);
+    void UserManager::addUser(User::Ptr user)
+    {
+        _users[user->getName()] = user;
+    }
 
-	if(it == _users.end())
-		return User::Ptr();
+    User::Ptr UserManager::getUser(const std::string &name)
+    {
+        auto it = _users.find(name);
 
-	return it->second;
-}
+        if(it == _users.end())
+            return User::Ptr();
 
-UserManager &UserManager::instance()
-{
-	static UserManager instance;
+        return it->second;
+    }
 
-	return instance;
-}
+    UserManager &UserManager::instance()
+    {
+        static UserManager instance;
 
-void UserManager::setFactory(UserFactoryFunc f) {
-    _factory = f;
-}
+        return instance;
+    }
 
-void UserManager::loadUser(const std::string &name, UserFactoryCallback callback) {
-    _factory(name, callback);
+    void UserManager::setFactory(UserFactoryFunc f)
+    {
+        _factory = f;
+    }
+
+    void UserManager::loadUser(const std::string &name, UserFactoryCallback callback)
+    {
+        _factory(name, callback);
+    }
 }
 
 

@@ -6,48 +6,59 @@
 #include <memory>
 #include "user.h"
 
-class Session
+namespace ws
 {
-public:
-	using Ptr = std::shared_ptr<Session>;
-
-	Session()
-		:	is_authorized(false),
-			is_auth_request_sent(false)
+	class Session
 	{
-		_token = boost::uuids::to_string(boost::uuids::random_generator()());
-	}
+	public:
+		using Ptr = std::shared_ptr<Session>;
 
-	~Session() {}
+		Session()
+				: is_authorized(false),
+				  is_auth_request_sent(false)
+		{
+			_token = boost::uuids::to_string(boost::uuids::random_generator()());
+		}
 
-	const std::string& getToken() const { return _token; }
+		~Session()
+		{ }
 
-	User::Ptr getUser() { return _data; }
-	void setUser(User::Ptr data) { _data = data; }
+		const std::string &getToken() const
+		{ return _token; }
 
-    bool isAuthorized() const {
-        return is_authorized;
-    }
+		User::Ptr getUser()
+		{ return _data; }
 
-    void authorize(bool is_authorized) {
-        Session::is_authorized = is_authorized;
-    }
+		void setUser(User::Ptr data)
+		{ _data = data; }
 
-	bool isAuthRequestSent() const
-	{
-		return is_auth_request_sent;
-	}
+		bool isAuthorized() const
+		{
+			return is_authorized;
+		}
 
-    void setAuthRequestSent()
-    {
-        is_auth_request_sent = true;
-    }
-private:
-    User::Ptr _data;
-	std::string _token;
+		void authorize(bool is_authorized)
+		{
+			Session::is_authorized = is_authorized;
+		}
 
-    bool is_authorized;
+		bool isAuthRequestSent() const
+		{
+			return is_auth_request_sent;
+		}
 
-private:
-	bool is_auth_request_sent;
-};
+		void setAuthRequestSent()
+		{
+			is_auth_request_sent = true;
+		}
+
+	private:
+		User::Ptr _data;
+		std::string _token;
+
+		bool is_authorized;
+
+	private:
+		bool is_auth_request_sent;
+	};
+}

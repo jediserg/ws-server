@@ -4,6 +4,8 @@
 #include <gtest/gtest.h>
 #include "utils/md5.h"
 
+using namespace ws;
+
 TEST(TestMD5, Testmd5) {
     MD5Hash hashFunc;
 

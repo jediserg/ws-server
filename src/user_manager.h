@@ -11,23 +11,28 @@
 #include "json11.hpp"
 #include <functional>
 
-class UserManager
+namespace ws
 {
-public:
-    using UserFactoryCallback = std::function<void (User::Ptr)>;
-    using UserFactoryFunc = std::function<void (std::string, UserFactoryCallback)>;
-    void addUser(User::Ptr user);
+    class UserManager
+    {
+    public:
+        using UserFactoryCallback = std::function<void(User::Ptr)>;
+        using UserFactoryFunc = std::function<void(std::string, UserFactoryCallback)>;
 
-    User::Ptr getUser(const std::string& login);
-    static UserManager& instance();
+        void addUser(User::Ptr user);
 
-    void loadUser(const std::string &name, UserFactoryCallback callback);
+        User::Ptr getUser(const std::string &login);
 
-    void setFactory(UserFactoryFunc f);
-private:
-    std::map<std::string, User::Ptr> _users;
-    UserFactoryFunc _factory;
-};
+        static UserManager &instance();
 
+        void loadUser(const std::string &name, UserFactoryCallback callback);
+
+        void setFactory(UserFactoryFunc f);
+
+    private:
+        std::map<std::string, User::Ptr> _users;
+        UserFactoryFunc _factory;
+    };
+}
 
 #endif //WS_SERVER_USER_MANAGER_H

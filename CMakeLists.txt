@@ -6,7 +6,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 add_subdirectory(3rdparty/cpptoml)
 add_subdirectory(3rdparty/websocketpp)
 add_subdirectory(3rdparty/json11)
-add_subdirectory(3rdparty/gtest)
+add_subdirectory(3rdparty/googletest)
 
 include_directories(src 3rdparty/json11 3rdparty/cpptoml/include 3rdparty/websocketpp)
 
@@ -26,7 +26,7 @@ set(SOURCE_FILES
 add_library(ws-server ${SOURCE_FILES})
 target_link_libraries(ws-server json11)
 
-add_executable(ws-server-tests tests/user_test.cpp tests/handlers_test.cpp tests/my_factory_test.cpp tests/user_manager_test.cpp tests/simple_auth_test.cpp tests/md5_test.cpp tests/fake_policy.h tests/fake_hash.h tests/auth_test.cpp tests/fake_ws_server_impl.h tests/fake_ws_server_impl.cpp tests/server_test.cpp)
+add_executable(ws-server-tests tests/user_test.cpp tests/handlers_test.cpp tests/user_manager_test.cpp tests/simple_auth_test.cpp tests/md5_test.cpp tests/fake_policy.h tests/fake_hash.h tests/auth_test.cpp tests/fake_ws_server_impl.h tests/fake_ws_server_impl.cpp tests/server_test.cpp)
 
 add_executable(example-echo examples/echo/main.cpp)
 

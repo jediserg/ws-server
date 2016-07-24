@@ -8,20 +8,24 @@
 #include <functional>
 #include "user.h"
 
-struct NoHash
+namespace ws
 {
-    std::string operator()(const std::string msg)
+    struct NoHash
     {
-        return msg;
-    }
-};
+        std::string operator()(const std::string msg)
+        {
+            return msg;
+        }
+    };
 
-template <class HashFunc = NoHash>class Policy
-{
-public:
-    virtual bool auth(User::Ptr user, std::string hash, std::string ticket) = 0;
-protected:
-    HashFunc hashFunc;
-};
+    template<class HashFunc = NoHash>
+    class Policy
+    {
+    public:
+        virtual bool auth(User::Ptr user, std::string hash, std::string ticket) = 0;
 
+    protected:
+        HashFunc hashFunc;
+    };
+}
 #endif //WS_SERVER_POLICY_H

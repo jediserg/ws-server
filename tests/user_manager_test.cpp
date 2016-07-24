@@ -4,6 +4,11 @@
 #include <gtest/gtest.h>
 #include "user_manager.h"
 
+using namespace ws;
+
+#include "net/simple_policy.h"
+
+
 TEST(TestUserManager, TestUserManager)
 {
     auto user1 = std::make_shared<User>("user1");

@@ -5,6 +5,8 @@
 #ifndef WS_SERVER_FAKE_USER_H_H
 #define WS_SERVER_FAKE_USER_H_H
 
+using namespace ws;
+
 #include "user.h"
 
 template <UserType user_type> class FakeUser : public User {

@@ -5,6 +5,8 @@
 #ifndef WS_SERVER_FAKE_POLICY_H_H
 #define WS_SERVER_FAKE_POLICY_H_H
 
+using namespace ws;
+
 #include "net/policy.h"
 #include "fake_hash.h"
 

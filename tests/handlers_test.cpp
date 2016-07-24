@@ -4,6 +4,8 @@
 #include <gtest/gtest.h>
 #include "handler_manager.h"
 
+using namespace ws;
+
 void fun1(Session::Ptr s, const json11::Json& j, HandlerCallback&& h)
 {
 

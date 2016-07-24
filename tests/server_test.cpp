@@ -5,7 +5,8 @@
 #include "fake_ws_server_impl.h"
 #include "net/server.hpp"
 #include "fake_user.h"
-#include "simple_policy.h"
+
+using namespace ws;
 
 TEST(ServerTests, ServerTests) {
     auto  policy = std::make_shared<NoAuthPolicy>();

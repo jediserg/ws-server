@@ -2,24 +2,36 @@
 
 #include <memory>
 
-enum class UserType {UNKNOWN, ADMIN, USER};
-
-class User
+namespace ws
 {
-public:
+	enum class UserType
+	{
+		UNKNOWN, ADMIN, USER
+	};
 
-    using Ptr = std::shared_ptr<User>;
+	class User
+	{
+	public:
 
-	User(const std::string& name, UserType type, std::string hash);
-	~User();
+		using Ptr = std::shared_ptr<User>;
 
-	const std::string& getName();
-	void setName(const std::string name);
+		User(std::string name, UserType type, std::string hash = "");
 
-	UserType getType();
-	void setType(UserType);
-protected:
-    std::string _name;
-    UserType _type;
-    std::string _hash;
-};
+		~User();
+
+		const std::string &getName() const;
+
+		void setName(std::string name);
+
+		UserType getType() const;
+
+		void setType(UserType);
+
+		const std::string &getHash() const;
+
+	protected:
+		std::string _name;
+		UserType _type;
+		std::string _hash;
+	};
+}

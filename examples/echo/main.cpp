@@ -6,9 +6,10 @@
 
 int main(int argc, char** argv)
 {
-    WsServerNoAuth server;
+    ws::WsServerNoAuth server;
 
-    RegisterHandler("echo", [](Session::Ptr session, const json11::Json& json, HandlerCallback&& callback){
+    ws::RegisterHandler("echo", [](ws::Session::Ptr session, const json11::Json &json, ws::HandlerCallback &&callback)
+        {
         callback(json11::Json::object{{"msg", json["msg"]}});
     });
 
